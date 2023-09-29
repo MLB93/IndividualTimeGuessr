@@ -32,8 +32,6 @@ public class ResultController {
 		model.addAttribute("distancediff", getDistanceDiff(image.getCoordinates(), coordinates));
 		model.addAttribute("coordinates", image.getCoordinates());
 
-		System.out.println(imageManager);
-
 		return "resultpage";
 	}
 
