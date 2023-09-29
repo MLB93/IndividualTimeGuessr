@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>TimeGuessr</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.titleImage {
+	max-width: 10%;
+	height: auto;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.mainText {
+	max-width: 50%;
+	height: auto;
+	position: relative;
+	margin-top: 5%;
+}
+</style>
+</head>
+<body>
+	<img th:src="@{/images/logo.png}" class="titleImage">
+
+	<div class="mainText">
+		<h1 th:text="${title}">No description available</h1>
+		<p th:text="'Du warst ' + ${yearsdiff} + ' Jahre daneben!'" />
+		<p th:text="'Jahr: ' + ${year}" />
+		<p th:text="'Du warst ' + ${distancediff} + ' daneben!'" />
+		<p th:text="'Standort: ' + ${coordinates}" />
+		<button onclick="window.location.href='/guesspage';">Next</button>
+	</div>
+</body>
+</html>
+

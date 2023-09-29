@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>TimeGuessr</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.mainImage {
+	max-width: 50%;
+	height: auto;
+	position: relative;
+	margin-top: 5%;
+}
+
+.titleImage {
+	max-width: 10%;
+	height: auto;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+}
+
+.inputContainer input {
+	margin-bottom: 10px;
+}
+
+.inputContainer button {
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<img th:src="@{/images/logo.png}" class="titleImage">
+	<img th:src="@{'data:image/jpeg;base64,'+${base64Image}}"
+		class="mainImage">
+	<div class="inputContainer">
+		<input type="number" name="year" placeholder="Jahreszahl" /> <input
+			type="text" name="coordinates" placeholder="Koordinaten" /> <input
+			type="hidden" name="imageid" th:value="@{${imageid}}" />
+		<button
+			onclick="window.location.href='/resultpage?year='+document.getElementsByName('year')[0].value+'&coordinates='+document.getElementsByName('coordinates')[0].value+'&imageid='+document.getElementsByName('imageid')[0].value;">Submit</button>
+	</div>
+</body>
+</html>

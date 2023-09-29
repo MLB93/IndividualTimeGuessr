@@ -1,0 +1,3 @@
+*.class
+timeguessr/src/main/resources/static/
+timeguessr/src/main/resources/imageinfos/
