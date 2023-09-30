@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>TimeGuessr</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.titleImage {
+	max-width: 10%;
+	height: auto;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.mainText {
+	max-width: 50%;
+	height: auto;
+	position: relative;
+	margin-top: 5%;
+}
+</style>
+</head>
+<body>
+	<img th:src="@{/images/logo.png}" class="titleImage">
+
+	<div class="mainText">
+		<h1>Error</h1>
+		<p th:text="'Error: ' + ${errormessage}" />
+		<input type="button" value="Back" onClick="javascript:history.back()">
+	</div>
+</body>
+</html>
+

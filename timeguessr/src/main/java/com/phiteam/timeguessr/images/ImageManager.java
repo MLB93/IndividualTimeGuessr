@@ -17,18 +17,21 @@ import org.springframework.stereotype.Component;
 public class ImageManager {
 	private static final String JSON_FILE = "/imageinfos/images.json";
 	private List<Image> images;
-	private List<Image> notShownImages = Collections.emptyList();
+	private List<Image> notShownImages;
 
 	public ImageManager() {
 		images = createImages();
+		notShownImages = new ArrayList<Image>(images);
 	}
 
 	public Image getRandomImage() {
 		if (images.isEmpty())
 			throw new ImageDescriptionNotLoadedException();
 
-		if (notShownImages.isEmpty())
+		if (notShownImages.isEmpty()) {
+			System.out.println("All images shown. Refill.");
 			notShownImages = new ArrayList<Image>(images);
+		}
 
 		Image image = notShownImages.get((int) (Math.random() * notShownImages.size()));
 		notShownImages.remove(image);

@@ -2,6 +2,8 @@ package com.phiteam.timeguessr;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +23,22 @@ public class ResultController {
 
 	@GetMapping("/resultpage")
 	public String greeting(@RequestParam(name = "imageid", required = true) String imageid,
-			@RequestParam(name = "year", required = true) int year,
+			@RequestParam(name = "year", required = true) String year,
 			@RequestParam(name = "coordinates", required = true) String coordinates, Model model) throws IOException {
 
+		if(!isValidYear(year)) {
+			model.addAttribute("errormessage", "Kein valides Jahr eingegeben.");
+			return "errorpage";
+		}
+		
+		if(!isValidCoordinate(coordinates)) {
+			model.addAttribute("errormessage", coordinates + " sind keine validen Koordinaten. Bitte Google-Maps Format verwenden.");
+			return "errorpage";
+		}
+		
 		Image image = imageManager.getImage(imageid);
-
 		model.addAttribute("title", image.getDescription());
-		model.addAttribute("yearsdiff", year - image.getYear());
+		model.addAttribute("yearsdiff", Integer.parseInt(year) - image.getYear());
 		model.addAttribute("year", image.getYear());
 		model.addAttribute("distancediff", getDistanceDiff(image.getCoordinates(), coordinates));
 		model.addAttribute("coordinates", image.getCoordinates());
@@ -36,15 +47,31 @@ public class ResultController {
 		return "resultpage";
 	}
 
+	private boolean isValidYear(String year) {
+		try {
+			Integer.parseInt(year);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean isValidCoordinate(String coordinate) {
+        String regex = "^-?\\d+(\\.\\d+)?,\\s*-?\\d+(\\.\\d+)?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(coordinate);
+        return matcher.matches();
+    }
+
 	private String getDistanceDiff(String coord1, String coord2) {
 		double diffvalue = calculateDistance(coord1, coord2);
-		if(diffvalue > 1000d) {
-			diffvalue = diffvalue/1000;
+		if (diffvalue > 1000d) {
+			diffvalue = diffvalue / 1000;
 			return DistanceNumberFormat.format(diffvalue) + " Kilometer";
 		}
 		return DistanceNumberFormat.format(diffvalue) + " Meter";
 	}
-	
+
 	private double calculateDistance(String coord1, String coord2) {
 		double lat1 = Double.parseDouble(coord1.split(",")[0]);
 		double lon1 = Double.parseDouble(coord1.split(",")[1]);
