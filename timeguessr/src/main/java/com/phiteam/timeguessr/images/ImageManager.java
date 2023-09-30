@@ -51,7 +51,7 @@ public class ImageManager {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jobj = (JSONObject) jsonArray.get(i);
 				images.add(new Image(jobj.getString("id"), jobj.getString("coordinates"), jobj.getInt("year"),
-						jobj.getString("desc")));
+						jobj.getString("desc"), jobj.getString("author")));
 			}
 			System.out.println("Image Data for " + images.size() + " images loaded");
 			return images;

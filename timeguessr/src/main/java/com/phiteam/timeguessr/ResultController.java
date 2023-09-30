@@ -31,6 +31,7 @@ public class ResultController {
 		model.addAttribute("year", image.getYear());
 		model.addAttribute("distancediff", getDistanceDiff(image.getCoordinates(), coordinates));
 		model.addAttribute("coordinates", image.getCoordinates());
+		model.addAttribute("author", image.getAuthor());
 
 		return "resultpage";
 	}
