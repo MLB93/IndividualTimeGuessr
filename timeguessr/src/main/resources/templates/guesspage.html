@@ -5,16 +5,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .mainImage {
-	max-width: 50%;
-	max-height: 100vh; 
-	height: auto;
-	position: relative;
-	margin-top: 5%;
-	object-fit: contain; 
+  max-width: 50%;
+  max-height: 100vh; 
+  height: auto;
+  position: relative;
+  margin-top: 6%;
+  object-fit: contain; 
+
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.mainImage:hover {
+  transform: scale(1.5);
 }
 
 .titleImage {
-	max-width: 10%;
+	max-width: 12%;
 	height: auto;
 	position: absolute;
 	top: 5px;
