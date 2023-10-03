@@ -28,7 +28,8 @@
 		<p th:text="'Du warst ' + ${yearsdiff} + ' Jahre daneben!'" />
 		<p th:text="'Jahr: ' + ${year}" />
 		<p th:text="'Du warst ' + ${distancediff} + ' daneben!'" />
-		<p th:text="'Standort: ' + ${coordinates}" />
+		<a th:href="@{'https://www.google.com/maps/search/?q='+${coordinates}}"
+		   target="_blank" th:text="'Standort: ' + ${coordinates}"></a>
 		<p th:text="'Eingereicht von: ' + ${author}" />
 		<button onclick="window.location.href='/guesspage';">Next</button>
 	</div>
