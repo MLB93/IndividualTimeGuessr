@@ -46,8 +46,9 @@ public class Image {
 
 			String encodeToString = Base64.getEncoder().encodeToString(imageBytes);
 			return encodeToString;
-		} catch (IOException e) {
-			System.out.println("Image " + id + " not found");
+		} catch (Exception e) {
+			System.out.println("Image " + id + " not loaded");
+			System.out.println(e.getClass().getSimpleName()+": "+e.getMessage());
 			return null;
 		}
 	}
