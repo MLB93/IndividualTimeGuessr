@@ -10,8 +10,4 @@ public class TimeguessrApplication {
 		SpringApplication.run(TimeguessrApplication.class, args);
 	}
 
-//	@Bean
-//	public ImageManager myObject() {
-//		return new ImageManager();
-//	}
 }

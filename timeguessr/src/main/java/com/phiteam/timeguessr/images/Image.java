@@ -1,6 +1,5 @@
 package com.phiteam.timeguessr.images;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
