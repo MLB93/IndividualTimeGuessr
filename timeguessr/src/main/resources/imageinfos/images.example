@@ -1,0 +1,16 @@
+[
+	{
+		"id": "image1.jpg",
+		"coordinates": "52.51510918946999, 13.400470625665076",
+		"year": 2023,
+		"desc": "Something in Berlin",
+		"author": "Hugo"
+	},
+	{
+		"id": "image2.jpg",
+		"coordinates": "40.75284361382706, -73.98426158655101",
+		"year": 2023,
+		"desc": "Something in New York",
+		"author": "anonymous"
+	}
+]

@@ -1,6 +1,6 @@
 *.class
-timeguessr/src/main/resources/static/
-timeguessr/src/main/resources/imageinfos/
-timeguessr/mvnw.cmd
+timeguessr/src/main/resources/static/images/*.jpg
+timeguessr/src/main/resources/static/images/*.png
+timeguessr/src/main/resources/imageinfos/images.json
 timeguessr/timeguessr.cmd
-timeguessr/mvnw.cmd
+timeguessr/compile.cmd
